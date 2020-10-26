@@ -1,0 +1,35 @@
+{
+  "name": "ngx-navigator-geolocation",
+  "version": "0.0.1",
+  "description": "A convenient geolocation service for building geo-aware Angular components.",
+  "peerDependencies": {
+    "@angular/common": "^10.2.0",
+    "@angular/core": "^10.2.0",
+    "@ngrx/effects": "^10.0.1",
+    "@ngrx/entity": "^10.0.1",
+    "@ngrx/store": "^10.0.1",
+    "rxjs": "^6.6.3"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "jasmine-marbles": "^0.6.0"
+  },
+  "author": "James W. Spears",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scriptloom/ngx-navigator-geolocation.git"
+  },
+  "keywords": [
+    "Latitude",
+    "Longitude",
+    "Angular",
+    "Geolocation"
+  ],
+  "bugs": {
+    "url": "https://github.com/scriptloom/ngx-navigator-geolocation/issues"
+  },
+  "homepage": "https://github.com/scriptloom/ngx-navigator-geolocation#readme"
+}
