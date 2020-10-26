@@ -1,8 +1,6 @@
 import { Directive, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadNavigatorGeolocations } from './navigator-geolocations.actions';
 import { addNavigatorGeolocation } from './navigator-geolocations.actions';
-import { nullPosition } from './navigator-geolocations.models';
 
 @Directive({
   selector: '[libNgxNavigatorGeolocation]'
@@ -15,12 +13,9 @@ export class NavigatorGeolocationDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadNavigatorGeolocations());
-
     this.navigatorGeolocation.watchPosition((position: Position) => {
       this.dispatchPosition(position);
     });
-
   }
 
   dispatchPosition(position: Position): void {

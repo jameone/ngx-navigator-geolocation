@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { loadNavigatorGeolocations, clearNavigatorGeolocations } from './store/navigator-geolocations.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'lib-ngx-navigator-geolocation',
   template: `
-    <p>
-      ngx-navigator-geolocation works!
-    </p>
+    <div libNgxNavigatorGeolocation></div>
   `,
-  styles: [
-  ]
+  styles: []
 })
-export class NgxNavigatorGeolocationComponent implements OnInit {
+export class NgxNavigatorGeolocationComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private store: Store) {
+  }
 
   ngOnInit(): void {
+    this.store.dispatch(loadNavigatorGeolocations());
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(clearNavigatorGeolocations());
   }
 
 }
