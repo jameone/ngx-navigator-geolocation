@@ -30,17 +30,27 @@ describe('NavigatorGeolocationDirective', () => {
         },
         getCurrentPosition: () => {
         },
-        watchPosition: () => {
-        }
+        watchPosition: (success) => Promise.resolve(success(
+          {
+            coords: {
+              accuracy: null,
+              altitude: null,
+              altitudeAccuracy: null,
+              heading: null,
+              latitude: null,
+              longitude: null,
+              speed: null
+            },
+            timestamp: 0
+          }
+        )),
       },
     });
-    spyOn(directive.navigatorGeolocation, 'watchPosition').and.returnValue(
-      0
-    );
+    spyOn(directive.navigatorGeolocation, 'watchPosition').and.callThrough();
     directive.ngOnInit();
     expect(directive.navigatorGeolocation.watchPosition).toHaveBeenCalledTimes(1);
     mockStore.scannedActions$.subscribe((action) => {
-      expect(action.type).toEqual(NavigatorGeolocationsActionsEnum.LoadNavigatorGeolocations);
+      expect(action.type).toEqual(NavigatorGeolocationsActionsEnum.SelectNavigatorGeolocation);
     });
   });
 
@@ -52,17 +62,27 @@ describe('NavigatorGeolocationDirective', () => {
         },
         getCurrentPosition: () => {
         },
-        watchPosition: () => {
-        },
+        watchPosition: (success) => Promise.resolve(success(
+          {
+            coords: {
+              accuracy: null,
+              altitude: null,
+              altitudeAccuracy: null,
+              heading: null,
+              latitude: null,
+              longitude: null,
+              speed: null
+            },
+            timestamp: 0
+          }
+        )),
       }
     });
-    spyOn(directive.navigatorGeolocation, 'watchPosition').and.returnValue(
-      0
-    );
+    spyOn(directive.navigatorGeolocation, 'watchPosition').and.callThrough();
     directive.ngOnInit();
     expect(directive.navigatorGeolocation.watchPosition).toHaveBeenCalledTimes(1);
     mockStore.scannedActions$.subscribe((action) => {
-      expect(action.type).toEqual(NavigatorGeolocationsActionsEnum.LoadNavigatorGeolocations);
+      expect(action.type).toEqual(NavigatorGeolocationsActionsEnum.SelectNavigatorGeolocation);
     });
   });
 

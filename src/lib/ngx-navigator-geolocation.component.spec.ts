@@ -1,16 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgxNavigatorGeolocationComponent } from './ngx-navigator-geolocation.component';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { initialNavigatorGeolocationsState } from './store/navigator-geolocations.reducer';
 
 describe('NgxNavigatorGeolocationComponent', () => {
   let component: NgxNavigatorGeolocationComponent;
   let fixture: ComponentFixture<NgxNavigatorGeolocationComponent>;
+  let mockStore: MockStore;
+  const initialState = initialNavigatorGeolocationsState;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideMockStore({initialState})],
       declarations: [ NgxNavigatorGeolocationComponent ]
     })
-    .compileComponents();
+      .compileComponents();
+    mockStore = TestBed.inject(MockStore);
   });
 
   beforeEach(() => {
