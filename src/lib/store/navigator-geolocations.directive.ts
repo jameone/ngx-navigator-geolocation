@@ -1,6 +1,6 @@
 import { Directive, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { addNavigatorGeolocation } from './navigator-geolocations.actions';
+import { addNavigatorGeolocation, selectNavigatorGeolocation } from './navigator-geolocations.actions';
 
 @Directive({
   selector: '[libNgxNavigatorGeolocation]'
@@ -19,9 +19,10 @@ export class NavigatorGeolocationDirective implements OnInit {
   }
 
   dispatchPosition(position: Position): void {
+    const id = position.timestamp.toString();
     this.store.dispatch(addNavigatorGeolocation({
       navigatorGeolocation: {
-        id: position.timestamp.toString(),
+        id,
         position: {
           coords: {
             accuracy: position.coords.accuracy,
@@ -36,6 +37,7 @@ export class NavigatorGeolocationDirective implements OnInit {
         }
       }
     }));
+    this.store.dispatch(selectNavigatorGeolocation({ id }));
   }
 
   get navigatorGeolocation(): Geolocation {
